@@ -1,0 +1,2 @@
+Measure-Command {.\CitySim.exe -I "..\..\Input_Data\Santana\Vector\Santana_CitySimData\Santana_CitySimXML.xml"}
+Measure-Command {.\CitySim.exe -I "..\..\Input_Data\Heino\Vector\Heino_CitySimData\Heino_statusQuo_CitySim_input-ALL.xml"}
