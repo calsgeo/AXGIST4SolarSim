@@ -14,6 +14,17 @@ import glob
 
 print("Script starts")
 
+def getFeatures(gdf):
+    """Function to parse features from GeoDataFrame in such a manner that rasterio wants them"""
+    import json
+    return [json.loads(gdf.to_json())['features'][0]['geometry']]
+
+def checkFolder(path):
+    isExist = os.path.exists(path)
+    if not isExist:
+        os.makedirs(path)
+        print(f"path {path} is created!")
+
 script_folder = os.path.abspath(__file__)
 data_folder = os.path.dirname(os.path.dirname(os.path.dirname(script_folder)))
 data_subfolder = 'Input_Data'
@@ -22,11 +33,6 @@ root_folder = os.path.join(data_folder,data_subfolder,location)
 os.chdir(root_folder)
 raster_folder = os.path.join(root_folder,'baseRaster')
 
-def getFeatures(gdf):
-    """Function to parse features from GeoDataFrame in such a manner that rasterio wants them"""
-    import json
-    return [json.loads(gdf.to_json())['features'][0]['geometry']]
-
 list_rasters = glob.glob(os.path.join(raster_folder,'*.tif'))
 weatherStation = os.path.join(root_folder,"Vector","INSPIRE_weatherLocation_28992.gml")
 shape_file = gpd.read_file(weatherStation,driver='GML')
@@ -34,9 +40,9 @@ shape_file = gpd.read_file(weatherStation,driver='GML')
 for inputRaster in list_rasters:
     inputRaster = inputRaster.split('/')[-1]
     print(f"------ Input raster file: {inputRaster}")
-    if "AHN_05m_dsm" == inputRaster:
+    if "AHN_05m_dsm" in inputRaster:
         dist_base = 1200
-    elif "AHN_5m_dsm" == inputRaster:
+    elif "AHN_5m_dsm" in inputRaster:
         dist_base = 20000
     elif "DEM_Europe" in inputRaster:
         dist_base = 200000
@@ -46,8 +52,11 @@ for inputRaster in list_rasters:
 
     env_shape_file = shape_file.buffer(dist_base).envelope
 
+    outputFolder = os.path.join(root_folder,'outputRaster')
+    checkFolder(outputFolder)
+
     if "AHN_05m_dsm" in inputRaster:
-        out_clipped_tif = os.path.join(root_folder,'outputRaster',f"base_{inputRaster.split('.')[0]}_{dist_base}m_InputDEM.tif")
+        out_clipped_tif = os.path.join(outputFolder,f"base_{inputRaster.split('.')[0]}_{dist_base}m_InputDEM.tif")
     else:
         out_clipped_tif = os.path.join(root_folder,'outputRaster',f"{inputRaster.split('.')[0]}_{dist_base}m_InputDEM.tif")
     data = rasterio.open(os.path.join(raster_folder,inputRaster))

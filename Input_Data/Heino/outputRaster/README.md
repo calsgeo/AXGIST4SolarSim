@@ -1,0 +1,1 @@
+File [DEM_Europe_200000m_InputDEM.tif](https://figshare.com/s/b05bbcfd5efd85dc4fa0) is available to download here.

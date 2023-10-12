@@ -106,6 +106,7 @@ print(f'Weather station coordinates: {lat_wsLocation} - {lon_wsLocation} - {ws_h
 g = pyproj.Geod(ellps='WGS84') # for the azimuth calculation
 
 list_csv = glob.glob(os.path.join(input_folder,'*.csv'))
+list_csv = glob.glob(os.path.join(input_folder,'DEM*.csv'))
 
 listHR_csv = ['AHN_05m_dsm_1200m_InputDEM_Points','AHN_1m_dsm_1200m_InputDEM_Points']
 

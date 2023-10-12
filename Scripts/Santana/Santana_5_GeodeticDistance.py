@@ -26,7 +26,7 @@ raster_input = 'outputRaster'
 vector_input = 'Vector'
 root_folder = os.path.join(data_folder,data_subfolder,location)
 
-high_res_region = 2000
+high_res_region = 124
 
 os.chdir(root_folder)
 print(root_folder)
@@ -86,7 +86,7 @@ print(f"-----    Start time: {start_time}")
 
 input_folder = os.path.join(root_folder,csv_input)
 
-weatherStation = os.path.join(root_folder,vector_input,"INSPIRE_weatherLocation_28992.gml")
+weatherStation = os.path.join(root_folder,vector_input,"Santana_weatherStationLocation_31983.gml")
 
 # Read shape file (created by Las Bound) using geopandas
 ws_location = gpd.read_file(weatherStation,driver='GML')
@@ -99,10 +99,10 @@ lon_wsLocation = ws_location_w84.geometry.x[0]
 lat_wsLocation = ws_location_w84.geometry.y[0]
 print(f"{lat_wsLocation},{lon_wsLocation}")
 
-src = rasterio.open(os.path.join(root_folder,raster_input,"AHN_05m_dsm_1200m_InputDEM.tif"))
+src = rasterio.open(os.path.join(root_folder,raster_input,"geosampa_1m_dsm_124m_InputDEM.tif"))
 epsg_code = int(src.crs.data['init'][5:])
 for val in src.sample(coords):
-    ws_height = round(val[0] + 1.5,2)
+    ws_height = 802.78
 
 print(f'Weather station coordinates: {lat_wsLocation} - {lon_wsLocation} - {ws_height}')
 g = pyproj.Geod(ellps='WGS84') # for the azimuth calculation
@@ -117,22 +117,10 @@ for input_csv in list_csv:
     csv_time = current_time
     print(f"Start time for csv {input_csv}: {csv_time}")
     
-    if "AHN3_05m" in input_csv:
-        dist_base = 1200
-    elif "AHN3_1m" in input_csv:
-        dist_base = 1200
-    elif input_csv == "AHN4_05m_dsm_Heino":
-        dist_base = 2500
-    elif input_csv == "AHN3_5m_dsm":
-        dist_base = 20000
-    else:
-        dist_base = 100000
+    dist_base = 124
 
     if type == "test":
         csv_file = os.path.join(input_folder, f"test_dataset.csv") # Test dataset
-        separator = ","
-    elif type == "test_Europe":
-        csv_file = os.path.join(input_folder, f"Test_DEM_Europe.csv") # Test dataset
         separator = ","
     else:
         csv_file = os.path.join(input_folder, f"{input_csv}.csv")
