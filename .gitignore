@@ -29,11 +29,18 @@ Temporary Items
 # Specific files in the repository (due to size limitation)
 Input_Data/Heino/baseRaster/AHN_05m_dsm.tif
 Input_Data/Heino/baseRaster/DEM_Europe.tif
-Input_Data/Heino/outputRaster/DEM_Europe_200000m_InputDEM.tif
-Input_Data/Heino/csv/AHN_1m_dsm_1200m_InputDEM_Points.csv
-Input_Data/Heino/csv/AHN_05m_dsm_1200m_InputDEM_Points.csv
-Input_Data/Heino/csv/AHN_5m_dsm_20000m_InputDEM_Points.csv
-Input_Data/Heino/csv/DEM_Europe_200000m_InputDEM_Points.csv
-Input_Data/Heino/csv/AHN_5m_dsm_20000m_InputDEM_Points_Calc.csv
+Input_Data/Heino/outputRaster/DEM_Europe_100000m_InputDEM.tif
 Input_Data/Heino/csv/AHN_1m_dsm_1200m_InputDEM_Points_Calc.csv
+Input_Data/Heino/csv/AHN_1m_dsm_1200m_InputDEM_Points_Calc.csv.7z
+Input_Data/Heino/csv/AHN_1m_dsm_1200m_InputDEM_Points.csv
 Input_Data/Heino/csv/AHN_05m_dsm_1200m_InputDEM_Points_Calc.csv
+Input_Data/Heino/csv/AHN_05m_dsm_1200m_InputDEM_Points_Calc.csv.7z
+Input_Data/Heino/csv/AHN_05m_dsm_1200m_InputDEM_Points.7z
+Input_Data/Heino/csv/AHN_05m_dsm_1200m_InputDEM_Points.csv
+Input_Data/Heino/csv/AHN_5m_dsm_20000m_InputDEM_Points_Calc.csv
+Input_Data/Heino/csv/AHN_5m_dsm_20000m_InputDEM_Points_Calc.csv.7z
+Input_Data/Heino/csv/AHN_5m_dsm_20000m_InputDEM_Points.csv
+Input_Data/Heino/csv/DEM_Europe_100000m_InputDEM_Points_Calc.csv
+Input_Data/Heino/csv/DEM_Europe_100000m_InputDEM_Points_Calc.csv.7z
+Input_Data/Heino/csv/DEM_Europe_100000m_InputDEM_Points.csv
+Input_Data/Heino/csv/DEM_Europe_100000m_InputDEM_Points.csv.7z
