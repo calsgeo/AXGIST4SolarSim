@@ -23,7 +23,7 @@ high_res_region = 2000
 
 os.chdir(root_folder)
 
-list_csv = glob.glob(os.path.join(root_folder,csv_input,'*05m*Calc.csv'))
+list_csv = glob.glob(os.path.join(root_folder,csv_input,'*1m*Calc.csv'))
 
 def time_delta(time_start,message):
     time_finish = datetime.now()
