@@ -1,7 +1,7 @@
 # This file needs to be placed at d:/Heino
 import os,sys
 import datetime
-# import arcpy
+import arcpy
 import sys
 
 def check_folder(folder):
@@ -34,7 +34,6 @@ check_folder(outputPath)
 arcpy.env.workspace = outputPath
 arcpy.env.overwriteOutput = True
 month= "full"
-
 start_time = datetime.datetime.now()
 print("    -----    ------   ")
 if location == 'Heino':

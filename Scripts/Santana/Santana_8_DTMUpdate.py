@@ -8,8 +8,6 @@ import geopandas as gpd
 
 script_folder = os.path.abspath(__file__)
 data_folder = os.path.normpath(os.path.dirname(os.path.dirname(os.path.dirname(script_folder))))
-print(data_folder)
-sys.exit()
 data_subfolder = 'Input_Data'
 location = 'Santana'
 csv_input = 'csv'
