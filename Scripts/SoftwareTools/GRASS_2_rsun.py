@@ -3,8 +3,19 @@
 import grass.script as gscript
 import sys
 
-location = 'Heino' # options: 'Heino' and 'Santana'
+location = 'Santana' # options: 'Heino' and 'Santana'
 resolution = "1m" # For Heino: '05m' or '1m'. For Santana: '1m'
+
+if location == 'Heino':
+    dataSource = 'AHN'
+    distance = 1200
+elif location == 'Santana':
+    dataSource = 'geosampa'
+    distance = 124
+else:
+    print(f'Unexpected location: {location}')
+    sys.exit()
+
 def compute_r_sun(i):
     day_value = str(i).zfill(3)
     glob_rad_value = location + "-" + resolution +  "-" + day_value + "-" + "glob_rad"
@@ -14,7 +25,6 @@ def compute_r_sun(i):
     if i<=31:
         linke_value = 2.1
         linke = "{}_{}_01_TL2010_Jan".format(location,resolution)
-        print(linke)
     elif i<=59:
         linke_value = 2.2
         linke = "{}_{}_02_TL2010_Feb".format(location,resolution)
@@ -51,10 +61,10 @@ def compute_r_sun(i):
 
     gscript.run_command("r.sun",
     overwrite = True,
-    elevation = "{}_{}_dsm_1200m_InputDEM".format(location,resolution),
-    aspect = "aspect_{}".format(resolution),
-    slope = "slope_{}".format(resolution),
-    horizon_basename = "horizon_{}_{}".format(location,resolution)
+    elevation = f"{dataSource}_{resolution}_dsm_{distance}m_InputDEM_WSTA_Updated",
+    aspect = f"aspect_{location}_{resolution}",
+    slope = f"slope_{location}_{resolution}",
+    horizon_basename = f"horizon_{location}_{resolution}",
     linke = linke,
     horizon_step=3,
     glob_rad=glob_rad_value,
