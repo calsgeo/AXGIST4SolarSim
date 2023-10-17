@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import grass.script as gscript
-import os
+import os,sys
 
 def check_folder(folder):
     # Create a new directory because it does not exist
@@ -11,9 +11,13 @@ def check_folder(folder):
 
 location = 'Santana' # options: 'Santana' and 'Heino'
 resolution = '1m' # For Heino: '05m' or '1m'. For Santana: '1m'
-absolute_path = 'Path_to_root_folder'
+# absolute_path = 'Path_to_root_folder'
+absolute_path = 'C://Users//Camilo//Dropbox//TUDelft//GitHub//AXGIST4SolarSim'
 relative_path = os.path.join(absolute_path,'Results',location,'GRASS GIS')
 check_folder(relative_path)
+
+location = 'Santana' # options: 'Heino' and 'Santana'
+resolution = "1m" # For Heino: '05m' or '1m'. For Santana: '1m'
 
 def raster_export(variable,i):
         day_value = str(i).zfill(3)
