@@ -59,7 +59,7 @@ It contains:
     - **14:** To indicate the root path for the output files. Please indicate the path to the main folder of this repository.
 - **SAGAGIS_1_SkyFactor.py** This Python script creates a batch file to execute in a Windows environment to create the solar sky factor file from the input DSM. The output patch file points to the path of the decompressed file *saga-8.5.1_x64.zip*, which is located in the Software folder.
 
-- **SAGAGIS_2_SolarBatFiles.py** This Python script creates the 365 batch files to execute the solar insolation tool from SAGA GIS. It requires the sky factor raster file created by the execution of the resulting batch file from *SAGAGIS_1_SkyFactor.py*.
+- **SAGAGIS_2_SolarBatFiles.py** This Python script creates the 365 batch files to execute the solar insolation tool from SAGA GIS. It requires the sky factor raster file created by the execution of the resulting batch file from *SAGAGIS_1_SkyFactor.py*; additionaly, it requires as well, the Linke turbidity files created by scripts number 8 for the corresponding location.
 ## Software
 This folder contains the executables for some of the software used in this research such as:
 - **SAGA GIS:** File *saga-8.5.1_x64.zip* [Download link](https://sourceforge.net/projects/saga-gis/files/SAGA%20-%208/SAGA%20-%208.5.1/). Scripts and simulations were done using the software for Windows x64 version 8.5.1.

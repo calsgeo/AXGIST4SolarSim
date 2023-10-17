@@ -39,7 +39,7 @@ print("    -----    ------   ")
 print(f"start for Linke raster files creation")
 
 script_folder = os.path.abspath(__file__)
-data_folder = os.path.dirname(os.path.dirname(script_folder))
+data_folder = os.path.normpath(os.path.dirname(os.path.dirname(script_folder)))
 data_subfolder = 'Input_Data'
 linke_folder = 'Tl2010_MonthlyAv_and_YearlyAv_WGS84_GeoTIFF'
 linkeFiles_path = os.path.join(data_folder,data_subfolder,linke_folder)
@@ -94,6 +94,7 @@ for location in locations:
                         
                         # Sample the raster at  point location and store the values in a DataFrame
                         for linke in list_Linkefiles:
+                            linke = linke.split(os.sep)[-1]
                             mm = linke_dic[linke]
                             src = rasterio.open(os.path.join(linkeFiles_path,linke))
                             srcCrs = src.crs
