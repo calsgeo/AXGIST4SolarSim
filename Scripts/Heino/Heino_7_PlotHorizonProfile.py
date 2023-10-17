@@ -62,7 +62,7 @@ def check_folder(folder):
         print("The output directory is created!")
 
 listFolders = glob.glob(os.path.join(root_folder,csv_input,'*/'))
-print(listFolders)
+
 for folder in listFolders:
     demFile = folder.split(os.sep)[-2]
     hor_folder = os.path.join(folder,'hor')
@@ -122,7 +122,6 @@ for folder in listFolders:
     # Reads HOR file
     csv_file = os.path.join(hor_folder,f'{demFile}_Points_Calc_ProfileData_Distance_{dist_base}m.hor')
     df_csv = pd.read_csv(csv_file)
-    '/Users/cleon/Library/CloudStorage/Dropbox/TUDelft/GitHub/AXGIST4SolarSim/Input_Data/Heino/csv/DEM_Europe_100000m_InputDEM/hor/DEM_Europe_100000m_InputDEM_Points_Calc_ProfileData_Distance_1200m.hor'
     df_csv['elevation_pyproj'] = 90-df_csv['elevation_pyproj'].values # To convert from Sky view to Horizon view
     df_agg,colname = plot_data(df_csv,angle_interval)
     df_agg.to_csv(os.path.join(hor_folder,f'{demFile}_radarPlotData_distance_full.csv'),index=False)
