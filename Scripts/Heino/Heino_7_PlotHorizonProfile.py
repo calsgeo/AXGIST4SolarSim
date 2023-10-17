@@ -73,7 +73,7 @@ for folder in listFolders:
     elif "AHN_5m" in demFile:
       minDistance,dist_base,interval,rasterName = 3000,20000,1500,"AHN3 5m"
     elif "DEM_Europe" in demFile:
-      minDistance,dist_base,interval,rasterName = 3500,100000,10000,"Copernicus 25m"
+      minDistance,dist_base,interval,rasterName = 3500,100500,10000,"Copernicus 25m"
     else:
        print(f'There are none parameters defined for file {demFile}')
     
