@@ -1,0 +1,21 @@
+This file provides run settings for the SEBE run initiated at: Sun, 14 May 2023 10:07:19
+Version: SEBE v2015a
+
+SURFACE DATA
+Digital surface model (DSM): /Users/camiloleon/Dropbox/TUDelft/Data/Solar Irradiance paper/Heino/UMEP/Building_ground_WSTA_Updated.tif
+Model domain: rows = 4801, columns = 4801
+Projected referece system: Amersfoort / RD New
+Geographical coordinate system: Amersfoort
+Latitude: 52.42374233360106
+Longitude: 6.241044201259632
+UTC: 1.0
+Transmissivity of light through vegetation: 0.03
+Digital vegetation canopy model (CDSM): /Users/camiloleon/Dropbox/TUDelft/Data/Solar Irradiance paper/Heino/UMEP/Trees_location.tif
+Trunkzone estimated from CDSM
+Trunkzone as percent of canopy height: 0.25
+
+METEOROLOGICAL FORCING DATA
+Meteorological file: /Users/camiloleon/Dropbox/TUDelft/Data/Solar Irradiance paper/Heino/UMEP/Met_Heino_Windows.txt
+
+ENVIRONMENTAL PARAMETERS
+Albedo: 0.2

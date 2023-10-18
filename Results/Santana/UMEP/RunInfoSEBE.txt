@@ -1,0 +1,21 @@
+This file provides run settings for the SEBE run initiated at: Tue, 16 May 2023 20:35:15
+Version: SEBE v2015a
+
+SURFACE DATA
+Digital surface model (DSM): /Users/camiloleon/Dropbox/TUDelft/Data/Solar Irradiance paper/Santana/Ground_Buildings_WSTA_Updated.tif
+Model domain: rows = 251, columns = 251
+Projected referece system: SIRGAS 2000 / UTM zone 23S
+Geographical coordinate system: SIRGAS 2000
+Latitude: -23.4975448294061
+Longitude: -46.621350812197555
+UTC: 0.0
+Transmissivity of light through vegetation: 0.03
+Digital vegetation canopy model (CDSM): /Users/camiloleon/Dropbox/TUDelft/Data/Solar Irradiance paper/Santana/Trees.tif
+Trunkzone estimated from CDSM
+Trunkzone as percent of canopy height: 0.25
+
+METEOROLOGICAL FORCING DATA
+Meteorological file: /Users/camiloleon/Dropbox/TUDelft/Data/Solar Irradiance paper/Santana/Santana_WeatherData.txt
+
+ENVIRONMENTAL PARAMETERS
+Albedo: 0.2
