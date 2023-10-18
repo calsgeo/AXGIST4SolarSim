@@ -11,8 +11,7 @@ def check_folder(folder):
 
 location = 'Santana' # options: 'Santana' and 'Heino'
 resolution = '1m' # For Heino: '05m' or '1m'. For Santana: '1m'
-# absolute_path = 'Path_to_root_folder'
-absolute_path = 'C://Users//Camilo//Dropbox//TUDelft//GitHub//AXGIST4SolarSim'
+absolute_path = 'Path_to_root_folder'
 relative_path = os.path.join(absolute_path,'Results',location,'GRASS GIS')
 check_folder(relative_path)
 
