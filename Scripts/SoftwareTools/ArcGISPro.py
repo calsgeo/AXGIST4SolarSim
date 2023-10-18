@@ -113,10 +113,10 @@ for dem_file in dems:
     source = dem_file.split('_')[0]
     print("Start time ", month," - resolution ", resolution, " : ", start_time)
 
-    direct_rad = os.path.join(outputPath, monthNumber + "-" + source + "-" + resolution+"-direct_rad.tif")
-    diff_rad = os.path.join(outputPath,monthNumber + "-" + source + "-" + resolution+"-diff_rad.tif")
-    direct_duration = os.path.join(outputPath, monthNumber + "-" + source + "-" + resolution+"-direct_duration.tif")
-    glob_rad = os.path.join(outputPath, monthNumber + "-" + source + "-" + resolution+"-global_rad.tif")
+    direct_rad = os.path.join(outputPath, "ArcGISPro" + "-" + resolution+"-direct_rad.tif")
+    diff_rad = os.path.join(outputPath,"ArcGISPro" + "-" + resolution+"-diff_rad.tif")
+    direct_duration = os.path.join(outputPath, "ArcGISPro" + "-" + resolution+"-direct_duration.tif")
+    glob_rad = os.path.join(outputPath, "ArcGISPro" + "-" + resolution+"-global_rad.tif")
 
 
     out_global_radiation_raster = arcpy.sa.AreaSolarRadiation(
