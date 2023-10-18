@@ -30,6 +30,13 @@ This folder contains the folders *Heino* and *Santana*. In those subfolder there
 ## Scripts
 This folder contains all the scripts necessary. There are subfolders for each of the test sites and they prepare the raster data according to the requirements of the corresponding simulation tool. All scripts have been adjusted to manage the relative path from this repository.
 
+All scripts except the one corresponding to ArcGIS Pro has been tested in Windows, macOS and Ubuntu 22.04 using a python environment with the following specifications:
+
+- Python 3.11.x
+- pandas 2.0.x
+- geopandas 0.14.x
+- rasterio 1.3.x
+
 Script files have the following structure {testSiteName}_{sequentialNumber}_{scriptName}.py. All scripts inside this folder follow the same sequential number and name. However, it can be the case that one specific file does not exits: this is because the script was not necessary for that location, i.e., **Santana_1_mergeRaster**.
 
 At the root of this folder you find the scripts necessary for results consolidation, plotting and analysis. These scripts continue with the sequential number from the location subfolders. The following paragraphs describe the scripts mentioning only the sequential number.
