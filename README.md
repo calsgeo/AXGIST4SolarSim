@@ -1,5 +1,5 @@
 # AXGIST4SolarSim
-This repository contains the material (scripts and data) for the paper titled assessment of geospatial tools for solar simulation
+This repository contains the material (scripts and data) for the paper titled assessment of geospatial tools for solar simulation.
 
 The followed workflow of our research can be seen in the following image:
 <center>
@@ -33,9 +33,11 @@ This folder contains all the scripts necessary. There are subfolders for each of
 All scripts except the one corresponding to ArcGIS Pro has been tested in Windows, macOS and Ubuntu 22.04 using a python environment with the following specifications:
 
 - Python 3.11.x
-- pandas 2.0.x
-- geopandas 0.14.x
-- rasterio 1.3.x
+- geopandas 0.14
+- matplotlib 3.8
+- pandas 2.0
+- rasterio 1.3
+- seaborn 0.13
 
 Script files have the following structure {testSiteName}_{sequentialNumber}_{scriptName}.py. All scripts inside this folder follow the same sequential number and name. However, it can be the case that one specific file does not exits: this is because the script was not necessary for that location, i.e., **Santana_1_mergeRaster**.
 
