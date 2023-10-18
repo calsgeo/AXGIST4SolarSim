@@ -24,7 +24,7 @@ def time_delta(time_start,message):
 script_path = os.path.normpath(os.path.dirname(os.path.abspath(__file__)))
 root_folder = os.path.normpath(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 data_subfolder = 'Input_Data'
-location = 'Santana'
+location = 'Heino'
 data_folder = os.path.join(root_folder,data_subfolder,location)
 os.chdir(data_folder)
     
