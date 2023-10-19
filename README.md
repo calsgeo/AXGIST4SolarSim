@@ -56,7 +56,7 @@ From script **8**, all of them take care of each of the location.
 
 ### SoftwareTools
 It contains:
--  **ArcGISPro.py:** This script shall be execute in a Python environment for ArcGIS Pro 3.X,
+-  **ArcGISPro.py:** This script shall be execute in a Python environment for ArcGIS Pro 3.0,
 - **GRASS_1_script.md:** This file contains the console scripts import and create the necessary files to run the r.sun in GRASS 7.8.
     - The data to import are the DSM and the Linke Turbidity files.
 -  **GRASS_2_rsun.py** This Python script shall be execute inside the GRASS environment. It calls the tool *r.sun* which simulates the solar irradiance for the data imported and prepared based on file *GRASS_script.md*. The simulation is execute for the 365 days of a typical year. In this file, the user needs to update the following lines:
@@ -68,8 +68,13 @@ It contains:
     - **14:** To indicate the root path for the output files. Please indicate the path to the main folder of this repository.
 - **SAGAGIS_1_SkyFactor.py** This Python script creates a batch file to execute in a Windows environment to create the solar sky factor file from the input DSM. The output patch file points to the path of the decompressed file *saga-8.5.1_x64.zip*, which is located in the Software folder.
 
-- **SAGAGIS_2_SolarBatFiles.py** This Python script creates the 365 batch files to execute the solar insolation tool from SAGA GIS. It requires the sky factor raster file created by the execution of the resulting batch file from *SAGAGIS_1_SkyFactor.py*; additionaly, it requires as well, the Linke turbidity files created by scripts number 8 for the corresponding location.
+- **SAGAGIS_2_SolarBatFiles.py** This Python script creates the 365 batch files to execute the solar insolation tool from SAGA GIS. It requires the sky factor raster file created by the execution of the resulting batch file from *SAGAGIS_1_SkyFactor.py*; additionally, it requires as well, the Linke turbidity files created by scripts number 8 for the corresponding location.
 ## Software
 This folder contains the executables for some of the software used in this research such as:
-- **SAGA GIS:** File *saga-8.5.1_x64.zip* [Download link](https://sourceforge.net/projects/saga-gis/files/SAGA%20-%208/SAGA%20-%208.5.1/). Scripts and simulations were done using the software for Windows x64 version 8.5.1.
-- **CitySim Solver:** File *CitySimSolver.zip* [Download link](https://github.com/kaemco/CitySim-Solver). Compiled for Windows in June 5 2023.
+- **ArcGIS Pro:** Used version 3.0, it requires licensing to use it [link](https://www.esri.com/en-us/arcgis/products/arcgis-pro/overview), 
+- **CitySim Solver:** File *CitySimSolver.zip* [Download link](https://github.com/kaemco/CitySim-Solver). Compiled for Windows in June 5 2023,
+- **GRASS GIS:** Used version 7.8 [Download link](https://grass.osgeo.org/download/)
+- **Ladybug:** [Download link](https://www.ladybug.tools)
+- **SAGA GIS:** File *saga-8.5.1_x64.zip* Used version 8.5.1 [Download link](https://sourceforge.net/projects/saga-gis/files/SAGA%20-%208/SAGA%20-%208.5.1/). Scripts and simulations were done using the software for Windows x64 version 8.5.1.
+- **SimStadt:** Used published version 20230307[Download link](https://simstadt.hft-stuttgart.de/getting-started/install-software/)
+- **UMEP:** [Documentation link](https://umep-docs.readthedocs.io)
