@@ -32,21 +32,12 @@ This folder contains all the scripts necessary. There are subfolders for each of
 
 All scripts except the one corresponding to ArcGIS Pro has been tested in Windows, macOS and Ubuntu 22.04 using a python environment with the following specifications:
 
-<<<<<<< HEAD
     Python 3.11
     geopandas 0.14
     matplotlib 3.8
     pandas 2.0
     rasterio 1.3
     seaborn 0.13
-=======
-- Python 3.11.x
-- geopandas 0.14
-- matplotlib 3.8
-- pandas 2.0
-- rasterio 1.3
-- seaborn 0.13
->>>>>>> 86f9daf68298671093ead10bf689091f473132c3
 
 Script files have the following structure {testSiteName}_{sequentialNumber}_{scriptName}.py. All scripts inside this folder follow the same sequential number and name. However, it can be the case that one specific file does not exits: this is because the script was not necessary for that location, i.e., **Santana_1_mergeRaster**.
 
