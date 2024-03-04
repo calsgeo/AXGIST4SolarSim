@@ -31,13 +31,15 @@ print(f"Script starts")
 
 root_folder = os.path.normpath(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-LocationsList = ['Heino','Santana']
+LocationsList = ['Heino']
 # locationFilesDict = {'Heino':'Heino_CityGML.gml','Santana':'Santana_CityGML.gml'}
 sourceList = ["CitySim","Ladybug","SimStadt"]
+resolution = '05m'
 for location in LocationsList:
     outputFolder = os.path.join(root_folder,'Results',location,'csv')
     for source in sourceList:
         inputLocation = os.path.join(root_folder,'Results',location,source)
+        outputFile = f"{source}-{resolution}-SimulationResults.csv"
         if source== 'SimStadt':
             inputFile = f'{location}_CityGML_meteonorm_Heino_SRA_SW.out'
             inputPath = os.path.join(inputLocation,inputFile)
@@ -68,13 +70,12 @@ for location in LocationsList:
                                         ,list_surfaces[3]:"WallSurface_4"
                                         ,list_surfaces[4]:"RoofSurface"}, inplace=True)
                 df_ws_day["doy"] = df_ws_day.index + 1
-                outputFile = os.path.join(outputFolder,"SimStadt-1m-SimulationResults.csv")
+                outputPath = os.path.join(outputFolder,outputFile)
                 print(f'Output file {outputFile} created')
-                df_ws_day.to_csv(outputFile,index=False)
+                df_ws_day.to_csv(outputPath,index=False)
         elif source== 'CitySim':
             print(f'{location} {source}')
-            inputFile = f'{location}_statusQuo_CitySim_input_Bldgs_SW.out'
-            
+            inputFile = f'{location}_statusQuo_CitySim_input_withDTM_SW.out'
             inputPath = os.path.join(inputLocation,inputFile)
             list_files = glob.glob(inputPath)
             if len(list_files)==0:
@@ -119,16 +120,15 @@ for location in LocationsList:
                 ir_df_day["doy"] = ir_df_day.index + 1
 
 
-                outputFile = os.path.join(outputFolder,f"{source}-1m-SimulationResults.csv")
+                outputPath = os.path.join(outputFolder,outputFile)
+                print(f'Output file {outputFile} created')
                 current_time = datetime.now()
                 time_delta(current_time,f"File {inputFile} processed")
-                current_time = datetime.now()
-                print(f'Output file {outputFile} created')
-                ir_df_day.to_csv(outputFile,index=False)
+                ir_df_day.to_csv(outputPath,index=False)
         elif source== 'Ladybug':
             print(f'{location} {source}')
             inputFile = f'{location}_Ladybug_ExportResults.csv'
-            inputPath = os.path.join(inputLocation,'-'+inputFile)
+            inputPath = os.path.join(inputLocation,inputFile)
             list_files = glob.glob(inputPath)
             if len(list_files)==0:
                 print(inputPath)
@@ -162,12 +162,12 @@ for location in LocationsList:
                     data[surfaces_list[4]] = list_4
                     data[surfaces_list[5]] = list_5
 
-                    df_minute = pd.DataFrame.from_dict(data)
-                    df_day = df_minute.groupby(df_minute.index // 24).sum()
-                    df_day = df_day.multiply(1000)
-                    df_day["doy"] = df_day.index + 1
+                df_hour = pd.DataFrame.from_dict(data)
+                df_day = df_hour.groupby(df_hour.index // 24).sum()
+                df_day = df_day.multiply(1000)
+                df_day["doy"] = df_day.index + 1
 
-                    outputFile = os.path.join(outputFolder,f"{source}-1m-SimulationResults.csv")
-                    current_time = datetime.now()
-                    time_delta(current_time,f'Output file {outputFile} created')
-                    df_day.to_csv(outputFile,index=False)
+                outputFile = os.path.join(outputFolder,f"{source}-{resolution}-SimulationResults.csv")
+                current_time = datetime.now()
+                time_delta(current_time,f'Output file {outputFile} created')
+                df_day.to_csv(outputFile,index=False)

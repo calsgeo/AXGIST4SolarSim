@@ -67,13 +67,13 @@ for folder in listFolders:
     demFile = folder.split(os.sep)[-2]
     hor_folder = os.path.join(folder,'hor')
     if "AHN_05m" in demFile:
-      minDistance,dist_base,interval,rasterName = 100,1200,100,"AHN3 0.5m"
+      minDistance,dist_base,interval,rasterName = 100,1200,100,"1,2km"
     elif "AHN_1m" in demFile:
-      minDistance,dist_base,interval,rasterName = 100,1200,100,"AHN3 1m"
+      minDistance,dist_base,interval,rasterName = 100,1200,100,"1,2km"
     elif "AHN_5m" in demFile:
-      minDistance,dist_base,interval,rasterName = 3000,20000,1500,"AHN3 5m"
+      minDistance,dist_base,interval,rasterName = 3000,20000,1500,"20km"
     elif "DEM_Europe" in demFile:
-      minDistance,dist_base,interval,rasterName = 3500,100500,10000,"Copernicus 25m"
+      minDistance,dist_base,interval,rasterName = 3500,40500,4000,"40km"
     else:
        print(f'There are none parameters defined for file {demFile}')
     
@@ -107,15 +107,19 @@ for folder in listFolders:
             listDistances[0] = dist_base
 
     print(f"Distances for the plot: {listDistances}")
+    if demFile == 'DEM_Europe':
+        print(listDistances)
+        sys.exit()
     
     angle_interval = 5 # For the plot output
 
-    title = f"Horizon profile using {rasterName} \n"
+    title = f"Horizon profile up to {rasterName} \n"
     fig = plt.figure(figsize=(8, 8))
     plt.rcParams.update({'font.size': 10})
     ax = fig.add_subplot(1,1,1, polar=True)
     plt.setp(ax.get_yticklabels(), fontweight="bold")
-    ax.set_ylim(78, 91) # To convert from Sky view to Horizon view
+    
+    ax.set_ylim(60, 92) # To convert from Sky view to Horizon view
     ax.set_theta_zero_location("N")
     ax.set_theta_direction(-1)
 
@@ -152,14 +156,20 @@ for folder in listFolders:
 
     ax.tick_params(axis='x', rotation=0)
     ax.xaxis.grid(linestyle="--", alpha=0.4)
-    ax.set_rlabel_position(30)
+    # Adjusting the y-tick labels to reflect the actual wind speeds
+    yticks = ax.get_yticks()
+    new_labels = [str(int(90 - ytick)) for ytick in yticks]
+    ax.set_yticklabels(new_labels)
+
+    ax.set_rlabel_position(0)
     angle = np.deg2rad(93)
     # ax.legend(loc="lower left", bbox_to_anchor=(0.9,0.9), ncol=3)
     ax.legend(loc="lower center", bbox_to_anchor=(0.5,-0.15), ncol=6, columnspacing=0.4)
 
     plt.title(title, fontsize = 18, x=0.5, y=1.0)
     outputFolder = os.path.join(data_folder,'Results','plots')
-    plt.savefig(os.path.join(outputFolder,f"{demFile}_{minDistance}m-{maxDistance}m_horizon.png"),dpi=300,bbox_inches='tight', transparent=True)
+    # plt.savefig(os.path.join(outputFolder,f"{demFile}_{minDistance}m-{maxDistance}m_horizon.png"),dpi=300,bbox_inches='tight', transparent=True)
+    plt.savefig(os.path.join(outputFolder,f"HorizonProfileUP_{rasterName}.png"),dpi=300,bbox_inches='tight', transparent=True)
     time_end = datetime.now()
     print(f'End time for file {demFile}: {time_end}')
 print("The end!")

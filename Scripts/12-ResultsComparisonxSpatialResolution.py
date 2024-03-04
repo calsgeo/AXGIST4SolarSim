@@ -35,10 +35,7 @@ for location in locationList:
     weatherFolder = os.path.join(root_folder,'Input_Data',location,'WeatherData')
     outputFolder = os.path.join(root_folder,'Results','plots')
     checkFolder(outputFolder)
-    if location == 'Heino':
-        weatherFileName = "NLD_OV_Heino.062780_TMYx.2007-2021.csv"
-    else:
-        weatherFileName = "NLD_OV_Heino.062780_TMYx.2007-2021.csv"
+    weatherFileName = f"{location}-hour.csv"
     weatherFilePath = os.path.join(weatherFolder,weatherFileName)
     list_files = glob.glob(weatherFilePath)
     if len(list_files)==0:
@@ -54,13 +51,12 @@ for location in locationList:
         df_ws_doy["RoofSurface"] = df_ws_doy["global"]
 
         fontBase = 40
-        sns.set( rc = {'figure.figsize' : ( 30, 10 )}, style='whitegrid')
+        sns.set_theme( rc = {'figure.figsize' : ( 30, 10 )}, style='whitegrid')
         for variable in list_variables:
             for source in sources:
                 input_folder = os.path.join(root_folder,'Results',location,'csv')
                 df_05m = pd.read_csv(os.path.join(input_folder,f'{source}-05m-SimulationResults.csv'))
-                df_1m = pd.read_csv(os.path.join(input_folder,f'{source}-1m-SimulationResults.csv'))
-                df = pd.concat([df_05m,df_1m])
+                df = pd.concat([df_05m])
                 print("Plot creation")
                 var = df.melt(col_level = 0,id_vars=["doy","resolution"],value_vars=variable)
                 var_ws = df_ws_doy.melt(col_level = 0,id_vars=["doy"],value_vars=variable)
@@ -68,7 +64,7 @@ for location in locationList:
                 ymin, ymax = ax.get_ylim()
                 ax.set_title(f"Heino. {source} - Daily {variable.capitalize()} Irradiation", fontsize=fontBase)
                 ax.set_xlabel("Day of year", fontsize=fontBase/1.5)
-                ax.set_ylabel("Wh/m\u00b2", fontsize=fontBase/1.5)
+                ax.set_ylabel("Wh/m\u00b2/", fontsize=fontBase/1.5)
                 ax.set_xlim(0, 365)
                 ax.set_xticks(range(0, 366, 5)) # <--- set the ticks first
                 ax.set_xticklabels(range(0, 366, 5),fontsize = fontBase/3, rotation=45)

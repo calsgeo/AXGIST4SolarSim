@@ -29,11 +29,11 @@ print(f"Script starts")
 
 root_folder = os.path.normpath(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 LocationsList = ['Heino','Santana']
-locationResDict = {'Heino':['05m','1m'],'Santana':['1m']}
+locationResDict = {'Heino':['05m'],'Santana':['1m']}
 locationWSTADict = {'Heino':'INSPIRE_weatherLocation_28992.gml','Santana':'Santana_weatherStationLocation_31983.gml'}
-sourceList = ["ArcGISPro","GRASS GIS","SAGA GIS"]
+sourceList = ["ArcGIS Pro","GRASS GIS","SAGA GIS"]
 
-sourceListDict = {"ArcGISPro": ["global","direct","diffuse","directDuration"],"GRASS GIS":["global", "direct", "diffuse", "reflectance"],"SAGA GIS":["global", "direct", "diffuse"]}
+sourceListDict = {"ArcGIS Pro": ["global","direct","diffuse","directDuration"],"GRASS GIS":["global", "direct", "diffuse", "reflectance"],"SAGA GIS":["global", "direct", "diffuse"]}
 
 for location in LocationsList:
     # Read points from Weather station
