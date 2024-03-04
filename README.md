@@ -12,8 +12,6 @@ This folder contains the folders *Heino* and *Santana*. In those subfolder there
 
 - **baseRaster:** This folder contains the raster files downloaded from the data sources used for this research. Those files are the starting point for our workflow. Due to storage restrictions, we place the download link to the corresponding repository.
 
-    In the specific case of the DSM published by the Copernicus project, we noted that the data is no longer available to download at the time of creating this repository [September-October 2023] [more info here](https://land.copernicus.eu/en/products/products-that-are-no-longer-disseminated-on-the-clms-website?tag=Copernicus%20Land), so we are including a small excerpt of the dataset to users can use them in a similar way as we have done in this research.
-
 - **csv:** This folder stores the files created to compute the horizon file and the corresponding graphs.
 - **outputRaster:** This folder contains the results of the first 7 Python scripts. These files are the input for the corresponding raster-based simulation tool.
 
@@ -53,6 +51,8 @@ From script **8**, all of them take care of each of the location.
 - Script **9:** consolidates the results from (GRASS GIS and SAGA GIS) from several raster files into a single one with 365 raster bands corresponding to the day of the year.
 - Script **10A & 10B:** These scripts create a csv file for each simulation tool with the consolidated results per day.
 - Script **11:** This script creates the line plots to compare the results of the raster-based simulation tools in Heino.
+- Script **12:** Generate the line plots of the weather data for each location.
+- Script **13:** Generate the graphs and csv files with the comparison of the output of all simulation tools.
 
 ### SoftwareTools
 It contains:
